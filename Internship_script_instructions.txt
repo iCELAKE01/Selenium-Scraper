@@ -1,0 +1,52 @@
+*Documentation*
+Functionality
+This script:
+
+Logs into Amazon using provided credentials.
+Scrapes Amazon's "Best Sellers" pages for specified categories.
+Collects product details, including:
+Product Name
+Price
+Rating
+Category
+Images
+Saves the extracted data into a JSON file.
+
+*Setup Instructions*
+Dependencies: Install the required Python libraries:
+
+pip install selenium
+
+Download WebDriver:
+
+Download ChromeDriver matching your Chrome browser version from ChromeDriver.
+Place it in the path specified by CHROME_DRIVER_PATH.
+Configuration:
+
+Replace USERNAME and PASSWORD with your Amazon login credentials.
+Update CHROME_DRIVER_PATH with the path to your ChromeDriver.
+File Output:
+
+Scraped data is saved in a file named amazon_best_sellers.json.
+
+
+*Usage*
+
+Run the script using:
+
+python amazon_best_seller_scraper.py
+
+The script will log in to Amazon, navigate to each category, scrape data, and save it.
+
+*Key Notes*
+
+Ensure compliance with Amazon's terms of service regarding data scraping.
+Use a valid Amazon account.
+This script is for educational and personal use only.
+
+
+In the above script I thought of implementing multithreading but in the later stages of development I refused from doing so due to several reasons which were not worth the risk:
+
+Amazon's Anti-Bot Measures: Running concurrent threads to scrape multiple pages or categories might raise red flags on Amazon's servers, triggering CAPTCHA challenges or blocking the IP address.
+Dependency on WebDriver: Selenium uses a browser instance that is not inherently thread-safe. Using multiple browser instances would require spawning separate processes, which significantly increases complexity.
+Simplified Error Handling: A single-threaded approach ensures easier debugging and robust error handling, particularly for login sessions and dynamic page loads.
